@@ -20,7 +20,13 @@ Now you can use `pushin-p`. While in the directory you can also install the CLI 
 
 ## Usage
 
-Generate 50 products (default: 10)
+Generate products (default: 10)
+
+```bash
+pushin-p generate
+```
+
+Generate 50 products
 
 ```bash
 pushin-p generate --size 50
@@ -37,3 +43,9 @@ Generate 20 lots (default: 10)
 ```bash
 pushin-p generate --size 50
 ```
+
+TODO:
+
+- Generate lots
+- Generate lots with barcode images
+- Randomize key properties (expiry, action, owner)
