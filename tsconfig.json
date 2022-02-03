@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es2016",
     "module": "commonjs",
-    "allowJs": true,
-    "checkJs": true,
     "maxNodeModuleJsDepth": 1,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
-  }
+    "emitDeclarationOnly": false,
+    "outDir": "dist"
+  },
+  "files": [
+    "lib/schema.ts"
+  ]
 }

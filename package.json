@@ -1,28 +1,34 @@
 {
-  "name": "pushin-p",
+  "name": "gs1-schema-dts",
   "version": "0.1.0",
-  "description": "",
-  "main": "dist/index.js",
+  "description": "TypeScript types for the GS1 web vocabulary (https://www.gs1.org/voc/)",
+  "main": "dist/schema.js",
   "bin": {
-    "pushin-p": "dist/index.js"
+    "gs1data": "dist/cli.js"
   },
+  "types": "dist/schema.d.ts",
   "scripts": {
-    "build": "esbuild bin/index.ts --minify --banner:js=\"#!/usr/bin/env node\" --platform=node --format=cjs --outfile=dist/index.js",
-    "clean": "rm -rf data"
+    "prepare": "mkdirp dist/",
+    "build:cli": "esbuild bin/cli.ts --minify --bundle --banner:js=\"#!/usr/bin/env node\" --platform=node --format=cjs --outfile=dist/cli.js",
+    "build:schema": "schema-dts-gen --ontology=https://schema.org/version/latest/schemaorg-all-https.nt --verbose --context https://www.gs1.org/voc/ > lib/schema.ts",
+    "build:type": "tsc",
+    "build": "npm run build:schema && npm run build:type && npm run build:cli"
   },
   "author": "hawyar",
+  "files": [
+    "dist/schema.d.ts",
+    "dist/schema.js"
+  ],
   "devDependencies": {
     "@types/node": "^17.0.14",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "@typescript-eslint/parser": "^5.10.2",
     "eslint": "^8.8.0",
-    "symbology": "^3.0.8"
-  },
-  "engines": {
-    "node": "16.13.2"
+    "mkdirp": "^1.0.4",
+    "schema-dts-gen": "^1.0.0"
   },
   "dependencies": {
     "arg": "^5.0.1",
-    "schema-dts": "^1.0.0"
+    "jsonld": "^5.2.0"
   }
 }
